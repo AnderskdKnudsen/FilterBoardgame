@@ -11,17 +11,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Objection and knex setup
-const objection = require("objection");
-const Model = objection.Model;
-const Knex = require("knex");
-const knexConfig = require("./knexfile.js");
-const knex = Knex(knexConfig.development);
+var server = app.listen(app.get('port'), err => {
+    if(err) console.log('Couldn\'t connect on port', app.get('port') + ". Error:", err.stack);
+    else console.log('Connected on port', app.get('port'));
+});
 
-Model.knex(knex);
-
-const db = {
-    "Knex": knex,
-    "User": require("./models/User.js")
-}
-
+app.get('/', (req, res) => {
+    res.sendFile('index.html');
+});
