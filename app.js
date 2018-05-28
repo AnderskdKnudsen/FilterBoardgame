@@ -6,14 +6,14 @@ const expressSession = require('express-session');
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-var startPage = {
+var startpage = {
     index: "login.html"
 };
 
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/", express.static("public", startPage));
+app.use("/", express.static("public", startpage));
 
 
 var server = app.listen(app.get('port'), err => {
@@ -21,6 +21,12 @@ var server = app.listen(app.get('port'), err => {
     else console.log('Connected on port', app.get('port'));
 });
 
-app.get('/', (req, res) => {
-    res.sendFile('login.html');
+const boardgameDB = require('./mongo/mongoBg.js');
+
+app.get("/insert-bg", (req, res) => {
+    boardgameDB.insert({"hej":"meddig"});
 });
+
+
+
+
