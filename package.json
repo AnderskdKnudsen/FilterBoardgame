@@ -1,0 +1,20 @@
+{
+  "name": "boardgamefilter",
+  "version": "1.0.0",
+  "description": "A simple site to easily filter your boardgames",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anders Knudsen",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.3",
+    "body-parser": "1.18.3",
+    "knex": "0.14.6",
+    "mysql2": "1.5.3",
+    "objection": "1.1.8",
+    "bcrypt": "2.0.1",
+    "express-session": "1.15.6"
+  }
+}
