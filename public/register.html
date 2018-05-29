@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FBG Register</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/register.css" />
-    <link rel="stylesheet" type="text/css" medie="screen" href="styles.main.css">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/styleLibraries/flatly.min.css" />
+    <link rel="stylesheet" type="text/css" medie="screen" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/register.css" />
 </head>
+
 <body>
-    <h1 class="text-success">Register</h1> 
+    <h1 class="text-success">Register</h1>
     <div class="registercontainer">
         <div class="registerwrapper">
             <form>
-                <input type="email" placeholder="E-mail">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Confirm password">
+                <input type="email" class="register-email" placeholder="E-mail">
+                <input type="password" class="register-password" placeholder="Password">
+                <input type="password" class="confirm-password" placeholder="Confirm password">
                 <button type="submit">Register</button>
             </form>
         </div>
     </div>
-    <script src="scripts/register.js"></script>
+    <div class="error text-danger"></div>
+    <div class="back-btn">
+        <a href="/login.html">
+            <button>Tilbage</button>
+        </a>
+    </div>
+    <script src="scripts/scriptLibraries/jquery.min.js"></script>
     <script src="scripts/scriptLibraries/ajax.min.js"></script>
-    <script src="scriptLibraries/jquery.min.js"></script>
+    <script src="scripts/register.js"></script>
 </body>
+
 </html>
