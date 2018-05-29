@@ -8,21 +8,25 @@ const mongoBg = require('./mongo/mongoBg');
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-var startpage = {
-    index: "login.html"
-};
-
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/", express.static("public", startpage));
-app.use(expressSession({ secret: 'anders' }));
+app.use(express.static(__dirname + "/public"));
 
-let session;
+app.use(expressSession({
+     secret: 'anders',
+     resave: true,
+     saveUninitialized: false
+}));
 
 var server = app.listen(app.get('port'), err => {
     if (err) console.log('Couldn\'t connect on port', app.get('port') + ". Error:", err.stack);
     else console.log('Connected on port', app.get('port'));
+});
+
+app.get("/", (req, res) => {
+    console.log("hej")
+    res.send("dav");
 });
 
 app.post("/register-user", (req, res) => {
@@ -63,7 +67,7 @@ app.post("/login-user", (req, res) => {
     mongoUser.findOnEmail(req.body).then(data => {
         if (!data) {
             response.status = 403;
-            response.message = "Wrong login"
+            response.message = "Wrong login. Remember it's case-sensitive"
             res.send(response);
         } else if(data) {
             bcrypt.compare(req.body.password, data.password)
@@ -72,10 +76,13 @@ app.post("/login-user", (req, res) => {
                         response.status = 200;
                         response.message = "Successfully logged in"
 
+                        req.session.email = req.body.email;
+                        req.session.password = req.body.password;
+
                         res.send(response);
                     } else {
                         response.status = 404;
-                        response.message = "Wrong login"
+                        response.message = "Wrong login. Remember it's case-sensitive"
 
                         res.send(response);
                     }
