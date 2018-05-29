@@ -25,20 +25,10 @@ var server = app.listen(app.get('port'), err => {
     else console.log('Connected on port', app.get('port'));
 });
 
-/*
-TODO
-Setup clientside javascript for login and register! 
-REMEMBER SESSIONS! validated: true if you're succesfully logged in. 
-Check on validated for every api endpoint. (Session). If false redirect to error page, which redirects back to login or register
-*/
-
 app.post("/register-user", (req, res) => {
     response = {};
 
-    console.log("reqbody", req.body);
-
-    //VIRKER
-    mongoUser.find(req.body).then(data => {
+    mongoUser.findOnEmail(req.body).then(data => {
         if (data) {
             response.status = 403;
             response.message = "E-mail already used"
@@ -69,7 +59,35 @@ app.post("/register-user", (req, res) => {
 });
 
 app.post("/login-user", (req, res) => {
-    /*what to do with the req*/
+    response = {};
+    mongoUser.findOnEmail(req.body).then(data => {
+        if (!data) {
+            response.status = 403;
+            response.message = "Wrong login"
+            res.send(response);
+        } else if(data) {
+            bcrypt.compare(req.body.password, data.password)
+                .then(foundDocument => {
+                    if(foundDocument) {
+                        response.status = 200;
+                        response.message = "Successfully logged in"
+
+                        res.send(response);
+                    } else {
+                        response.status = 404;
+                        response.message = "Wrong login"
+
+                        res.send(response);
+                    }
+                }).catch(err => {
+                    console.log("Error comparing", err);
+                })
+        }
+    }).catch(err => {
+        console.log("Error finding",err);
+    });
+
+
 });
 
 

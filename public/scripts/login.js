@@ -1,25 +1,31 @@
 $(document).ready(() => {
-
+    
     let email = getParameterByName("email");
     $(".login-email").val(email);
-
+    
     $("form").submit(event => {
         event.preventDefault();
-        
+        $(".error").empty();
+
         let email, password, data;
         email = $(".login-email").val();
         password = $(".login-password").val();
-        data = {"email": email, "password": password};
-        
+        data = { "email": email, "password": password };
+
+
         $.ajax({
-            type: POST,
+            type: "POST",
             url: "login-user",
             data: data
         }).done(responseData => {
-            /*what do to witht he response*/
+            if (responseData.status === 200) {
+                window.location.href = "/index.html";
+            } else if (responseData.status === 403 || responseData.status === 404) {
+                $(".error").append('<p>'+responseData.message+'</p>');
+            }
         });
     });
-    
+
 });
 
 //Thankfully lended from stackoverflow
