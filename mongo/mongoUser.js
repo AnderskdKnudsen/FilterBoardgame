@@ -20,7 +20,7 @@ function insert(user) {
     });
 }
 
-function find(user) {
+function findOnEmail(user) {
     return new Promise((resolve, reject) => {
         mongo.connect(path, (err, db) => {
             if (err) {
@@ -38,5 +38,23 @@ function find(user) {
     });
 }
 
-module.exports.find = find;
+function findOnPass(user) {
+    return new Promise((resolve, reject) => {
+        mongo.connect(path, (err, db) => {
+            if (err) {
+                reject(err.stack);
+            }
+            db.collection("users").findOne({ "password": user.password }, (err, result) => {
+                if (err) {
+                    reject(err.stack);
+                } else {
+                    db.close();
+                    resolve(result);
+                }
+            });
+        });
+    });
+}
+module.exports.findOnPass = findOnPass;
+module.exports.findOnEmail = findOnEmail;
 module.exports.insert = insert;
