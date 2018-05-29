@@ -68,6 +68,10 @@ app.post("/register-user", (req, res) => {
     });
 });
 
+app.post("/login-user", (req, res) => {
+    /*what to do with the req*/
+});
+
 
 
 
