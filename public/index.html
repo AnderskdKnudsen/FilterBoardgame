@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FBG Home</title>
+    <title>FBG Login</title>
     <link rel="stylesheet" type="text/css" media="screen" href="styles/styleLibraries/flatly.min.css" />
     <link rel="stylesheet" type="text/css" medie="screen" href="styles/main.css">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/index.css" />
 </head>
-<body>
 
-    <h1 class="text-success">Welcome</h1>
-    
+<body>
+<h1>Login</h1>
+    <div class "logincontainer">
+        <div class="loginwrapper">
+            <form action="">
+                <input type="text" class="login-email">
+                <input type="password" class="login-password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="error text-danger"></div>
+    <div class="registerwrapper">
+        <a href="register.html">Register here</a>
+    </div>
+
 
     <script src="scripts/scriptLibraries/jquery.min.js"></script>
     <script src="scripts/scriptLibraries/ajax.min.js"></script>
     <script src="scripts/index.js"></script>
 </body>
+
 </html>

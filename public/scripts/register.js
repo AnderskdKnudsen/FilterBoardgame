@@ -23,7 +23,7 @@ $(document).ready(() => {
             data: data
         }).done(responseData => {
             if(responseData.success === "done") {
-                window.location.href = "/login.html?email="+responseData.email;
+                window.location.href = "/index.html?email="+responseData.email;
             }
             if(responseData.status === 403){
                 $(".error").append('<p>'+responseData.message+'</p>');
