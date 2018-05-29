@@ -66,26 +66,6 @@ app.post("/register-user", (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-    // if (emailExists) {
-
-    //     console.log("shit hit the fans");
-    //     response.status = 403;
-    //     response.message = "E-mail already used"
-    //     res.send(response);
-
-    // } else {
-
-    //     bcrypt.hash(req.body.password, saltRounds)
-    //         .then(hashedPassword => {
-    //             var hashedUser = { "email": req.body.email, "password": hashedPassword };
-    //             mongoUser.insert(hashedUser);
-    //         }).catch(err => {
-    //             response.status = 500;
-    //             response.message = "Something went wrong";
-    //             response.success = "done";
-    //         });
-    //     res.send(response);
-    // }
 });
 
 
