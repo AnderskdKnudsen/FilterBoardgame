@@ -39,8 +39,32 @@ app.post("/register-user", (req, res) => {
 
     //VIRKER
     mongoUser.find(req.body).then(data => {
-        console.log("promise",data);
-        if(data) console.log("hej");
+        if (data) {
+            response.status = 403;
+            response.message = "E-mail already used"
+            res.send(response);
+        } else {
+            bcrypt.hash(req.body.password, saltRounds)
+                .then(hashedPassword => {
+                    var hashedUser = { "email": req.body.email, "password": hashedPassword };
+                    mongoUser.insert(hashedUser)
+                        .then(data => {
+                            if (data) {
+                                response.status = 200;
+                                response.message = "Inserted user correctly";
+                                response.success = "done";
+                                response.email = req.body.email;
+                                res.send(response);
+                            }
+                        });
+                }).catch(err => {
+                    response.status = 500;
+                    response.message = "Something went wrong(crypt)";
+                    res.send(response);
+                });
+        }
+    }).catch(err => {
+        console.log(err);
     });
     // if (emailExists) {
 
