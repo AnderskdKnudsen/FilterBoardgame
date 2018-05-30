@@ -1,0 +1,25 @@
+.col {
+    padding-top: 10px;
+    border-right: 1px solid;
+}
+
+.radio {
+    margin-left: 40px;
+}
+
+.col>p {
+    text-align: center;
+}
+
+input[type="radio"] {
+    margin-right: 12px;
+    margin-bottom: 5px;
+}
+
+.row {
+    border-bottom: 2px solid;
+}
+
+.submit-btn {
+    margin-top: 10px;
+}

@@ -11,6 +11,12 @@ $(document).ready(() => {
         }
         email = $(".register-email").val();
         password = $(".register-password").val();
+        
+        if(email === "" || password === "") {
+            $(".error").append('<p>Enter both password and email</p>');
+            return;
+        }
+
 
         var data = {
             "email": email,
