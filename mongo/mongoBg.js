@@ -11,11 +11,12 @@ function search(boardgame) {
             db.collection("boardgames").find({ 
                 minplayers: { $gte: boardgame.minplayers },
                 maxplayers: { $gte: boardgame.maxplayers },
-                // genre: boardgame.genre,
+                genre: boardgame.genre,
                 time: { $gte: boardgame.time}
             }).toArray((err, games) => {
                 resolve(games);
             });
+
         });
     });
 }
