@@ -1,19 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FBG Home</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/styleLibraries/flatly.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="styles/styleLibraries/flatly.min.css" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" medie="screen" href="styles/main.css">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/home.css" />
 </head>
+
 <body>
 
-    
+    <!-- <div class="top">
+        <div class="nav-bar">
+            <ul class="nav-bar-list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="createboardgame.html">Create boardgame</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h1>Boardgame filter</h1>
+        </div>
+    </div> -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="createboardgame.html">Create Boardgame</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col" style="border-left: 1px solid">
+                    <p class="radio-head">Minimum Players</p>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="minplayers" value="2">2</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="minplayers" value="3">3</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="minplayers" value="4">4</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="minplayers" value="5">5</label>
+                    </div>
+                    <div class="radio either">
+                        <label>
+                            <input type="radio" name="minplayers" value="0">Either</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="radio-head">Maximum players</p>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="maxplayers" value="3">3</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="maxplayers" value="4">4</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="maxplayers" value="5">5</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="maxplayers" value="6">6</label>
+                    </div>
+                    <div class="radio either">
+                        <label>
+                            <input type="radio" name="maxplayers" value="100">Either</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="radio-head">Genre</p>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="genre" value="deckbuilding">Deckbuilding</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="genre" value="racing">Racing</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="genre" value="workerplacement">Workerplacement</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="genre" value="warfare">Warfare</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="genre" value="argumentation">Argumentation</label>
+                    </div>
+                    <div class="radio either">
+                        <label>
+                            <input type="radio" name="genre" value="either">Either</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="radio-head"> Maximum playingtime (min)</p>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="time" value="30">30</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="time" value="60">60</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="time" value="120">120</label>
+                    </div>
+                    <div class="radio either">
+                        <label>
+                            <input type="radio" name="time" value="500">Either</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn col-2 btn-primary float-right">Filter</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="error text-danger"></div>
+    </div>
+
+    <div class="container">
+        <div class="list-boardgames"></div>
+    </div>
 
     <script src="scripts/scriptLibraries/jquery.min.js"></script>
     <script src="scripts/scriptLibraries/ajax.min.js"></script>
     <script src="scripts/home.js"></script>
 </body>
+
 </html>

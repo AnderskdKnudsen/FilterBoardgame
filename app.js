@@ -14,19 +14,14 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 
 app.use(expressSession({
-     secret: 'anders',
-     resave: true,
-     saveUninitialized: false
+    secret: 'anders',
+    resave: true,
+    saveUninitialized: false
 }));
 
 var server = app.listen(app.get('port'), err => {
     if (err) console.log('Couldn\'t connect on port', app.get('port') + ". Error:", err.stack);
     else console.log('Connected on port', app.get('port'));
-});
-
-app.get("/", (req, res) => {
-    console.log("hej")
-    res.send("dav");
 });
 
 app.post("/register-user", (req, res) => {
@@ -69,10 +64,10 @@ app.post("/login-user", (req, res) => {
             response.status = 403;
             response.message = "Wrong login. Remember it's case-sensitive"
             res.send(response);
-        } else if(data) {
+        } else if (data) {
             bcrypt.compare(req.body.password, data.password)
                 .then(foundDocument => {
-                    if(foundDocument) {
+                    if (foundDocument) {
                         response.status = 200;
                         response.message = "Successfully logged in"
 
@@ -91,10 +86,16 @@ app.post("/login-user", (req, res) => {
                 })
         }
     }).catch(err => {
-        console.log("Error finding",err);
+        console.log("Error finding", err);
     });
+});
 
+app.post("/get-boardgames", (req, res) => {
+    response = {};
 
+    mongoBg.search(req.body).then(g => console.log(g));
+    
+    res.send(req.body);
 });
 
 

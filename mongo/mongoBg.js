@@ -2,22 +2,23 @@ const mongo = require('mongodb').MongoClient;
 
 let path = 'mongodb://localhost:27017/FilterBoardgame';
 
-module.exports = {
-    insert: function(boardgame){
+function search(boardgame) {
+    return new Promise((resolve, reject) => {
         mongo.connect(path, (err, db) => {
-            if (err) console.log('Error connecting to the database', err.stack)
-            else {
-                let collection = db.collection("boardgames");
-
-                collection.insertOne(boardgame, (err, result) => {
-                    if (err) console.log("Error inserting in database", err.stack);
-                    else {
-                        console.log("inserted:", boardgame);
-                        db.close();
-                    }
-                });
+            if (err) {
+                reject(err.stack);
             }
+            db.collection("boardgames").find({ 
+                minplayers: { $gte: boardgame.minplayers },
+                maxplayers: { $gte: boardgame.maxplayers },
+                genre: boardgame.genre,
+                time: { $gte: boardgame.time}
+            }).toArray((err, games) => {
+                resolve(games);
+            });
+
         });
-    }
-    
+    });
 }
+
+module.exports.search = search;
