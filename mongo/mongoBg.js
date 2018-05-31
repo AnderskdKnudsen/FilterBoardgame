@@ -8,11 +8,12 @@ function search(boardgame) {
             if (err) {
                 reject(err.stack);
             }
-            db.collection("boardgames").find({ 
-                minplayers: { $gte: boardgame.minplayers },
-                maxplayers: { $gte: boardgame.maxplayers },
+            db.collection("boardgames").find({
+                minplayers: { $lte: parseInt(boardgame.minplayers, 10) },
+                maxplayers: { $gte: parseInt(boardgame.maxplayers, 10) },
                 genre: boardgame.genre,
-                time: { $gte: boardgame.time}
+                playingtime: { $lte: parseInt(boardgame.time, 10)}
+
             }).toArray((err, games) => {
                 resolve(games);
             });

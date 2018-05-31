@@ -3,6 +3,7 @@ $(document).ready(() => {
     $("form").submit(event => {
         event.preventDefault();
         $(".error").empty();
+        $(".list-boardgames").empty();
         
         let minplayers, maxplayers, genre, time;
         var checked = [
@@ -29,7 +30,15 @@ $(document).ready(() => {
             url: "get-boardgames",
             data: data
         }).done(responseData => {
-            console.log(responseData);
+            responseData.forEach(boardgame => {
+                $(".list-boardgames").append(
+                    '<li>' + boardgame.title + '</li>' + 
+                    '<li>' + boardgame.minplayers + '</li>' +
+                    '<li>' + boardgame.maxplayers + '</li>' +
+                    '<li>' + boardgame.genre + '</li>' +
+                    '<li>' + boardgame.time + '</li>'
+                );
+            });
         });
     });
 });

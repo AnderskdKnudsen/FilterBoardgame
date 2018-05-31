@@ -23,3 +23,15 @@ input[type="radio"] {
 .submit-btn {
     margin-top: 10px;
 }
+
+.list-boardgames {
+
+}
+
+.navbar-left:first-child {
+    margin-left: 80px;
+}
+
+.navbar-right > li {
+    margin-right: 80px;
+}

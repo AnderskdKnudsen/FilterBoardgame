@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FBG Home</title>
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="styles/styleLibraries/flatly.min.css" /> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" medie="screen" href="styles/main.css">
@@ -15,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav navbar-left">
                 <li class="nav-item active">
                     <a class="nav-link" href="home.html">Home</a>
                 </li>
@@ -51,9 +50,9 @@
                         <label>
                             <input type="radio" name="minplayers" value="5">5</label>
                     </div>
-                    <div class="radio either">
+                    <div class="radio">
                         <label>
-                            <input type="radio" name="minplayers" value="0">Either</label>
+                            <input type="radio" name="minplayers" value="100">Either</label>
                     </div>
                 </div>
                 <div class="col">
@@ -75,9 +74,9 @@
                         <label>
                             <input type="radio" name="maxplayers" value="6">6</label>
                     </div>
-                    <div class="radio either">
+                    <div class="radio">
                         <label>
-                            <input type="radio" name="maxplayers" value="100">Either</label>
+                            <input type="radio" name="maxplayers" value="0">Either</label>
                     </div>
                 </div>
                 <div class="col">
@@ -102,7 +101,7 @@
                         <label>
                             <input type="radio" name="genre" value="argumentation">Argumentation</label>
                     </div>
-                    <div class="radio either">
+                    <div class="radio">
                         <label>
                             <input type="radio" name="genre" value="either">Either</label>
                     </div>
@@ -121,9 +120,13 @@
                         <label>
                             <input type="radio" name="time" value="120">120</label>
                     </div>
-                    <div class="radio either">
+                    <div class="radio">
                         <label>
-                            <input type="radio" name="time" value="500">Either</label>
+                            <input type="radio" name="time" value="180">180</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="time" value="1000">Either</label>
                     </div>
                 </div>
             </div>
@@ -135,7 +138,11 @@
     </div>
 
     <div class="container">
-        <div class="list-boardgames"></div>
+        <div class="boardgames">
+            <ul class="list-boardgames">
+                
+            </ul>
+        </div>
     </div>
 
     <script src="scripts/scriptLibraries/jquery.min.js"></script>
