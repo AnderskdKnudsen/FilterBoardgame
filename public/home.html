@@ -32,7 +32,7 @@
     <div class="container">
         <form>
             <div class="row">
-                <div class="col" style="border-left: 1px solid">
+                <div class="col" style="border-right: 1px solid rgba(165, 153, 153, 0.5)">
                     <p class="radio-head">Minimum Players</p>
                     <div class="radio">
                         <label>
@@ -55,7 +55,7 @@
                             <input type="radio" name="minplayers" value="100">Either</label>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col" style="border-right: 1px solid rgba(165, 153, 153, 0.5)">
                     <p class="radio-head">Maximum players</p>
 
                     <div class="radio">
@@ -79,7 +79,7 @@
                             <input type="radio" name="maxplayers" value="0">Either</label>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col" style="border-right: 1px solid rgba(165, 153, 153, 0.5)">
                     <p class="radio-head">Genre</p>
                     <div class="radio">
                         <label>
@@ -130,6 +130,7 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <button type="submit" class="submit-btn col-2 btn-primary float-right">Filter</button>
         </form>
     </div>
@@ -139,9 +140,15 @@
 
     <div class="container">
         <div class="boardgames">
-            <ul class="list-boardgames">
-                
-            </ul>
+            <table class="table table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Minimum Players</th>
+                    <th>Maximum Players</th>
+                    <th>Genre</th>
+                    <th>Playing time</th>
+                </tr>
+            </table>
         </div>
     </div>
 

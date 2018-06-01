@@ -1,0 +1,22 @@
+.login {
+    margin-top: 8%;
+}
+
+.btn-primary {
+    background-color: #369636;
+    border-color: #5a9c67;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #386945;
+    border-color: #3b5744;
+}
+
+.register-link {
+    color: black;
+    text-decoration-line: underline;
+}
+
+.register-link:hover {
+    color: #386945;
+}

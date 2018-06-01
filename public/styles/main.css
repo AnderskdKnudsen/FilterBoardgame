@@ -1,37 +1,24 @@
 .col {
     padding-top: 10px;
-    border-right: 1px solid;
 }
 
-.radio {
-    margin-left: 40px;
+body {
+    background: lightgray;
 }
 
 .col>p {
     text-align: center;
 }
 
-input[type="radio"] {
-    margin-right: 12px;
-    margin-bottom: 5px;
-}
-
-.row {
-    border-bottom: 2px solid;
-}
-
-.submit-btn {
-    margin-top: 10px;
-}
-
-.list-boardgames {
-
-}
-
 .navbar-left:first-child {
     margin-left: 80px;
 }
 
-.navbar-right > li {
+.navbar-right>li {
     margin-right: 80px;
+}
+
+.title {
+    margin-top: 5%;
+    text-align: center;
 }

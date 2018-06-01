@@ -1,10 +1,11 @@
 $(document).ready(() => {
+    $(".table").hide();
 
     $("form").submit(event => {
         event.preventDefault();
         $(".error").empty();
-        $(".list-boardgames").empty();
-        
+        $(".table").show();
+
         let minplayers, maxplayers, genre, time;
         var checked = [
             minplayers = $('input[name=minplayers]:checked').val(),
@@ -13,7 +14,7 @@ $(document).ready(() => {
             time = $('input[name=time]:checked').val()
         ];
 
-        if(checked.indexOf(undefined) != -1) {
+        if (checked.indexOf(undefined) != -1) {
             $(".error").append('<p>Remember to choose for every category</p>');
             return;
         }
@@ -31,12 +32,15 @@ $(document).ready(() => {
             data: data
         }).done(responseData => {
             responseData.forEach(boardgame => {
-                $(".list-boardgames").append(
-                    '<li>' + boardgame.title + '</li>' + 
-                    '<li>' + boardgame.minplayers + '</li>' +
-                    '<li>' + boardgame.maxplayers + '</li>' +
-                    '<li>' + boardgame.genre + '</li>' +
-                    '<li>' + boardgame.time + '</li>'
+
+                $(".table").append(
+                    '<tr>' +
+                    '<td>' + boardgame.title + '</td>' +
+                    '<td>' + boardgame.minplayers + '</td>' +
+                    '<td>' + boardgame.maxplayers + '</td>' +
+                    '<td>' + boardgame.genre + ' </td>' +
+                    '<td>' + boardgame.time + '</td>' +
+                    '</tr>'
                 );
             });
         });

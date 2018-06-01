@@ -91,7 +91,6 @@ app.post("/login-user", (req, res) => {
 });
 
 app.post("/get-boardgames", (req, res) => {
-    response = {};
     let boardgames = [];
     mongoBg.search(req.body)
         .then(foundBgs => {
@@ -104,11 +103,12 @@ app.post("/get-boardgames", (req, res) => {
                     time: boardgame.playingtime
                 });
             });
-            console.log("app", boardgames);
             res.send(boardgames);
         });
+});
 
-
+app.post("/insert-boardgame", (req, res) => {
+    mongoBg.insert(req.body).then(v => console.log(v));
 });
 
 
