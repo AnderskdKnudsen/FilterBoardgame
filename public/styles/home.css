@@ -1,0 +1,12 @@
+.radio {
+    margin-left: 40px;
+}
+
+input[type="radio"] {
+    margin-right: 12px;
+    margin-bottom: 5px;
+}
+
+.submit-btn {
+    margin-bottom: 15px;
+}

@@ -47,6 +47,7 @@ function findOnPass(user) {
             db.collection("users").findOne({ "password": user.password }, (err, result) => {
                 if (err) {
                     reject(err.stack);
+                    return
                 } else {
                     db.close();
                     resolve(result);

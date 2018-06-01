@@ -91,11 +91,24 @@ app.post("/login-user", (req, res) => {
 });
 
 app.post("/get-boardgames", (req, res) => {
-    response = {};
+    let boardgames = [];
+    mongoBg.search(req.body)
+        .then(foundBgs => {
+            foundBgs.forEach(boardgame => {
+                boardgames.push({
+                    title: boardgame.title,
+                    minplayers: boardgame.minplayers,
+                    maxplayers: boardgame.maxplayers,
+                    genre: boardgame.genre[0],
+                    time: boardgame.playingtime
+                });
+            });
+            res.send(boardgames);
+        });
+});
 
-    mongoBg.search(req.body).then(g => console.log(g));
-    
-    res.send(req.body);
+app.post("/insert-boardgame", (req, res) => {
+    mongoBg.insert(req.body).then(v => console.log(v));
 });
 
 

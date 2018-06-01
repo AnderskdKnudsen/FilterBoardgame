@@ -1,0 +1,12 @@
+.login {
+    margin-top: 6%;
+}
+
+.register-link {
+    color: black;
+    text-decoration-line: underline;
+}
+
+.register-link:hover {
+    color: #386945;
+}
