@@ -4,8 +4,8 @@ $(document).ready(() => {
     $("form").submit(event => {
         event.preventDefault();
         $(".error").empty();
-        $(".table").show();
-
+        $(".table").find("tr:gt(0)").remove();
+        
         let minplayers, maxplayers, genre, time;
         var checked = [
             minplayers = $('input[name=minplayers]:checked').val(),
@@ -13,12 +13,14 @@ $(document).ready(() => {
             genre = $('input[name=genre]:checked').val(),
             time = $('input[name=time]:checked').val()
         ];
-
+        
         if (checked.indexOf(undefined) != -1) {
             $(".error").append('<p>Remember to choose for every category</p>');
             return;
         }
-
+        
+        $(".table").show();
+        
         var data = {
             "minplayers": checked[0],
             "maxplayers": checked[1],
