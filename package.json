@@ -4,7 +4,10 @@
   "description": "A simple site to easily filter your boardgames",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-dev": "nodemon ./app.js",
+    "start-frontdev": "budo app.js --open --live"
   },
   "author": "Anders Knudsen",
   "license": "MIT",

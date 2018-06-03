@@ -19,13 +19,6 @@ app.use(expressSession({
     saveUninitialized: false
 }));
 
-
-/*
-Minimum players, maximum players and genre should be dropdown
-*/
-
-
-
 var server = app.listen(app.get('port'), err => {
     if (err) console.log('Couldn\'t connect on port', app.get('port') + ". Error:", err.stack);
     else console.log('Connected on port', app.get('port'));
