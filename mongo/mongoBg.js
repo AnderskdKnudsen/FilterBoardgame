@@ -17,6 +17,7 @@ function search(boardgame) {
 
             }).toArray((err, games) => {
                 resolve(games);
+                db.close();
             });
 
         });
