@@ -41,42 +41,42 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="boardgame-minplayers">Minimum players:</label>
-                                <select class="form-control" class="boardgame-minplayers">
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select class="form-control" class="boardgame-minplayers" id="boardgame-minplayers">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="boardgame-maxplayers">Maximum players:</label>
-                                <select class="form-control" class="boardgame-maxplayers">
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>6+</option>
+                                <select class="form-control" class="boardgame-maxplayers" id="boardgame-maxplayers">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="99">6+</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="boardgame-genre">Genre:</label>
-                        <select class="form-control" class="boardgame-genre">
-                            <option>Deckbuilding</option>
-                            <option>Racing</option>
-                            <option>Workerplacement</option>
-                            <option>Warfare</option>
-                            <option>Argumentation</option>
-                            <option>Trade</option>
+                        <select class="form-control" class="boardgame-genre" id="boardgame-genre">
+                            <option value="Deckbuilding">Deckbuilding</option>
+                            <option value="Racing">Racing</option>
+                            <option value="Workerplacement">Workerplacement</option>
+                            <option value="Warfare">Warfare</option>
+                            <option value="Argumentation">Argumentation</option>
+                            <option value="Trade">Trade</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="boardgame-playingtime">Maximum playing time</label>
-                        <input type="number" class="form-control boardgame-playingtime" placeholder="Enter playingtime in minutes">
+                        <input type="number" min="0" class="form-control boardgame-playingtime" placeholder="Enter playingtime in minutes">
                     </div>
                     <button type="submit" class="btn-primary float-right">Create</button>
                 </form>
@@ -84,6 +84,7 @@
                     <a href="/home.html">
                         <button class="btn btn-md">Back</button>
                     </a>
+                    <button class="btn btn-md empty">Empty</button>
                 </div>
             </div>
         </div>

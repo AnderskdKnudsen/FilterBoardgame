@@ -14,7 +14,7 @@ $(document).ready(() => {
             time = $('input[name=time]:checked').val()
         ];
         
-        if (checked.indexOf(undefined) != -1) {
+        if (checked.indexOf(undefined) !== -1) {
             $(".error").append('<p>Remember to choose for every category</p>');
             return;
         }
