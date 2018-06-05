@@ -11,6 +11,7 @@ $(document).ready(() => {
     $("form").submit(event => {
         event.preventDefault();
         $(".error").empty();
+        $(".succes").empty();
 
 
         if (!($(".boardgame-title").val() && $(".boardgame-playingtime").val())) {
@@ -34,11 +35,24 @@ $(document).ready(() => {
             "Want to create boardgame?"
         );
 
-        if (result) {
+        if (!result) return;
 
-        } else {
-            return;
-        }
+        $.ajax({
+            type: "POST",
+            url: "insert-boardgame",
+            data: data
+        }).done(responseData => {
+            if(responseData.status === 403) {
+                $(".error").append('<p>' + responseData.message + '</p>');
+                return;
+            } else {
+                $(".succes").append('<p>' + responseData.message + '</p>');
+                setTimeout(() => {
+                    window.location = "/home.html";
+                }, 3000);
+            }
+        })
+
 
 
 

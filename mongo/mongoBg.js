@@ -7,7 +7,7 @@ function search(boardgame) {
         mongo.connect(path, (err, db) => {
             if (err) {
                 reject(err.stack);
-                return
+                return;
             }
             db.collection("boardgames").find({
                 minplayers: { $lte: parseInt(boardgame.minplayers, 10) },
@@ -16,6 +16,10 @@ function search(boardgame) {
                 playingtime: { $lte: parseInt(boardgame.time, 10) }
 
             }).toArray((err, games) => {
+                if (err) {
+                    reject(err.stack)
+                    return;
+                }
                 resolve(games);
                 db.close();
             });
@@ -31,17 +35,42 @@ function insert(boardgame) {
                 reject(err.stack);
                 return;
             }
-            db.collection("boardgames").insertOne(boardgame, (err, result) => {
+
+            let boardgameToInsert = {
+                title: boardgame.title,
+                minplayers: parseInt(boardgame.minplayers, 10),
+                maxplayers: parseInt(boardgame.maxplayers, 10),
+                genre: [boardgame.genre, "either"],
+                playingtime: parseInt(boardgame.playingtime, 10)
+            };
+
+            db.collection("boardgames").insertOne(boardgameToInsert, (err, result) => {
                 if(err) {
                     reject(err.stack);
                     return;
                 }
-                resolve(result);
+                resolve(true);
                 db.close();
             });
         });
     });
 }
 
+function searchOnTitle(boardgame) {
+    return new Promise((resolve, reject) => {
+        mongo.connect(path, (err, db) => {
+            if (err) {
+                reject(err.stack);
+                return;
+            }
+            db.collection("boardgames").find({title: boardgame.title})
+            .toArray((err, game) => {
+                resolve(game);
+            });
+        });
+    });
+}
+
+module.exports.searchOnTitle = searchOnTitle;
 module.exports.insert = insert;
 module.exports.search = search;
