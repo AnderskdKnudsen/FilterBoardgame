@@ -1,5 +1,14 @@
 $(document).ready(() => {
+    if(!window.name){
+        alert("You're not logged in");
+        window.location = "/";
+    }
     $(".table").hide();
+
+    $(".logout-btn").on("click", () => {
+        window.name = "";
+        window.location = "/";
+    });
 
     $("form").submit(event => {
         event.preventDefault();

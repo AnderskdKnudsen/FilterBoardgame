@@ -70,7 +70,7 @@ app.post("/login-user", (req, res) => {
                     if (foundDocument) {
                         response.status = 200;
                         response.message = "Successfully logged in"
-
+                        
                         res.send(response);
                     } else {
                         response.status = 404;
