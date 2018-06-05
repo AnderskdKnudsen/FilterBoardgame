@@ -70,10 +70,7 @@ app.post("/login-user", (req, res) => {
                     if (foundDocument) {
                         response.status = 200;
                         response.message = "Successfully logged in"
-
-                        req.session.email = req.body.email;
-                        req.session.password = req.body.password;
-
+                        
                         res.send(response);
                     } else {
                         response.status = 404;
@@ -108,7 +105,28 @@ app.post("/get-boardgames", (req, res) => {
 });
 
 app.post("/insert-boardgame", (req, res) => {
-    mongoBg.insert(req.body).then(v => console.log(v));
+    let response = {};
+    mongoBg.searchOnTitle(req.body).then(foundGame => {
+        if (foundGame.length >= 1) {
+            response.message = "Game with that title already exists";
+            response.status = 403;
+
+            res.send(response);
+        } else {
+            mongoBg.insert(req.body).then(data => {
+                if (data) {
+                    response.status = 200;
+                    response.message = "Inserted boardgame correctly";
+                    response.success = "done";
+
+                    res.send(response);
+                }
+            }).catch(err => {
+                if (err) console.log("Error inserting bg", err)
+            });
+
+        }
+    });
 });
 
 
