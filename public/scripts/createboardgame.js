@@ -1,9 +1,8 @@
 $(document).ready(() => {
     if(!window.name){
-        alert("You're not logged in");
-        window.location = "/";
+        window.location = "/error.html";
     }
-    
+
     $(".empty").on("click", () => {
         $(".boardgame-title").val("");
         $(".boardgame-playingtime").val("");

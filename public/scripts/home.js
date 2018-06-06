@@ -1,7 +1,6 @@
 $(document).ready(() => {
     if(!window.name){
-        alert("You're not logged in");
-        window.location = "/";
+        window.location = "/error.html";
     }
     $(".table").hide();
 

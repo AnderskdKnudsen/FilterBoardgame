@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FBG Error</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/styleLibraries/flatly.min.css" />
+    <link rel="stylesheet" type="text/css" medie="screen" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/error.css" />
 </head>
+
 <body>
-    <h1>
-        You do not have access to this page right now.
-        Try loging in first.
-    </h1>
-    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark"></nav>
+    <br>
+    <div class="container">
+        <h1 class="text-danger">
+            Error 403: Forbidden <br>
+            You do not have access to this page right now.
+            <br> Try loging in first.
+        </h1>
+        <br>
+        <div class="">
+            <a href="index.html">
+                <button class="btn-login btn-success btn-lg">Login</button>
+            </a>
+        </div>
+    </div>
+    <script src="scripts/scriptLibraries/jquery.min.js"></script>
+    <script src="scripts/scriptLibraries/ajax.min.js"></script>
+    <script src="scripts/error.js"></script>
 </body>
+
 </html>

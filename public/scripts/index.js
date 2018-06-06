@@ -25,7 +25,7 @@ $(document).ready(() => {
             data: data
         }).done(responseData => {
             if (responseData.status === 200) {
-                window.name = email;
+                window.name = "secretstring";
                 window.location.href = "/home.html";
             } else if (responseData.status === 403 || responseData.status === 404) {
                 $(".error").append('<p>' + responseData.message + '</p>');
